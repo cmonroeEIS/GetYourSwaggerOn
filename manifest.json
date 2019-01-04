@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Craig's Eureka Swagger Extension",
+  "description": "Nothing to do, just visit your Eureka pages!",
+  "version": "0.1",
+  "icons": {
+    "128": "icon48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://eureka.vpca.us-east-1.eis-deliverylive.cloud:8761/*","http://eureka.vpca.us-east-1.eis-deliveryintegration.cloud:8761/","http://eureka.vpca.us-east-1.eis-deliverydevqa.cloud:8761/"
+      ],
+      "js": ["jquery-2.1.3.min.js", "content.js"]
+    }
+  ]
+}

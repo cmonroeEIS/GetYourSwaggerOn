@@ -20,3 +20,15 @@ document.getElementById("save").onclick = function() {
     });
     window.close();
 }
+
+document.getElementById("reset").onclick = function() {
+    var d = null;
+    chrome.storage.sync.set({ "data" : d }, function() {
+        if (chrome.runtime.error) {
+            console.log("Runtime error.");
+        } else {
+            console.log("Save Successful");
+        }
+    });
+    window.close();
+}

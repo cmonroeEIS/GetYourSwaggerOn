@@ -33,7 +33,7 @@ $.get(url, function (response) {
         // put the title on
 
 
-        newContent.push("<H1>" + " Available Servers</H1>" + info + "<br><br>");
+        newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br><br>");
 
 
         var i;

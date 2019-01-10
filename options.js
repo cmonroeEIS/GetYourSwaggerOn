@@ -18,7 +18,9 @@ document.getElementById("save").onclick = function() {
             console.log("Save Successful");
         }
     });
+    alert("Please Reload Your Browser Tab");
     window.close();
+
 }
 
 document.getElementById("reset").onclick = function() {
@@ -30,5 +32,8 @@ document.getElementById("reset").onclick = function() {
             console.log("Save Successful");
         }
     });
+    alert("Please Reload Your Browser Tab");
     window.close();
+
 }
+

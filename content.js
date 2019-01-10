@@ -1,48 +1,60 @@
-// content.js
-//alert("Craig's Swagger Extension is Active!");
+/**
+ * @author Craig Monroe
+ * @email cmonroe@ebsco.com
+ * @create date 2018-12-30 09:07:07
+ * @modify date 2019-01-04 11:03:02
+ * @desc Jquery that rewrites the Eureka page
+ */
+
 
 var url = window.location.pathname;
+//var stringToMatch = "resourcemanagement.ftf";
+// initialize to blank so no domainMarket will be filtered if it's not saved
+var stringToMatch = "";
+
+chrome.storage.sync.get(['data'], function(result) {
+    stringToMatch = result.data;
+    console.log('Domain Market currently is ' + result.data);
+});
 
 $.get(url, function(response) {
-  //console.log(response);
-
-  // <a href="http://10.25.130.105:32772/info" target="_blank">resourcemanagement.ftf.internaladapter:151-01227b3:b7b888b7384f</a>
-  //var links = response.match(/<h1 class="flat-top text-primary">\[ ([\d]*?) \]<\/h1>/)[1];
-  //var links = response.match(/<a href="\d.\d.\d.\d:\d target="_blank">resourcemanagement.ftf.\w:/)[0][1];
-  //var length = response.length;
-
+    
   var array, text;
   array = response.split("<tr>");
   console.log("Length:" + array.length);
-  var stringToMatch = "resourcemanagement.ftf";
+
   var newContent = new Array();
   var info = "<i>" + "CSM v.01" + "</i>";
+  var imageName = document.getElementById("images/Swagger-logo.png");
+  newContent.push(imageName);
   // put the title on
-  newContent.push("<H1>" + stringToMatch + " Servers</H1>" + info + "<br><br>");
+  newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br><br>");
 
   var i;
   for (i = 0; i < array.length; i++) {
     if (array[i].match(stringToMatch)) {
-      console.log("ELEMENT NUMBER: " + i);
+      //console.log("ELEMENT NUMBER: " + i);
       var tempValue = array[i];
       tempValue = tempValue.replace(") -",") <br>");
       tempValue = tempValue.replace("</a> ,","<br>");
       var stringWithSpace = ">       ,                              <a";
       tempValue = tempValue.replace(stringWithSpace,"");
-      tempValue = tempValue.replace("                ", "");
-      
+      //tempValue = tempValue.replace("                ", "");
+      //tempValue = tempValue.replace("<td>","<td style=\"background-color:red;\">");
+
       var j;
       for(j=0; j < 2;j++) {
         tempValue = tempValue.replace("/info", "/swagger-ui.html");
       }
-      console.log(tempValue);
+      //console.log(tempValue);
       newContent.push(tempValue +"<br><br>");
 
-      console.log("ELEMENT END");
+      //console.log("ELEMENT END");
     }
   }
 
 if (newContent != null) {
+
     document.body.innerHTML = newContent;
 }
 

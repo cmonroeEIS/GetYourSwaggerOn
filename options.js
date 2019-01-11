@@ -1,4 +1,12 @@
-var alertString = "Please Reload Your Browser Tab                       ";
+/**
+ * @author Craig Monroe
+ * @email cmonroe@ebsco.com
+ * @create date 2018-12-30 09:07:07
+ * @modify date 2019-01-04 11:03:02
+ * @desc Javascript to support the options pop-up
+ */
+
+var alertString = "Please Reload Your Browser Tab";
 
 document.body.onload = function() {
 

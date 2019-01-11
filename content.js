@@ -23,46 +23,53 @@ $.get(url, function (response) {
 
 
         var array, text;
-        array = response.split("<tr>");
+        // add something else to split on
+        response = response.replace(/\<tr\>/g,"<!--split-->\n\t\t\t<tr>");
+        //response = response.replace(/,/igm,"Service: ");
+
+
+
+        console.log ("RESPONSE:" + response);
+        array = response.split("<!--split-->");
         console.log("Length:" + array.length);
 
         var newContent = new Array();
-        var info = "<i>" + "CSM v.01" + "</i>";
-        var imageName = document.getElementById("images/Swagger-logo.png");
-        newContent.push(imageName);
-        // put the title on
+        // Let them know this is early
+        var info = "<i>" + "CSM v 1.0" + "</i> <a href='https://github.com/cmonroeEIS/EurekaSwaggerExt/blob/master/README.md' target='_blank'>README.md</a> ";
+        //var imageName = document.getElementById("images/Swagger-logo.png");
+        //newContent.push(imageName);
 
-
+        // Add a title
         newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br><br>");
 
 
         var i;
         for (i = 0; i < array.length; i++) {
             if (array[i].match(stringToMatch)) {
-                //console.log("ELEMENT NUMBER: " + i);
+                // console debugging help
                 console.log("String Used: " + stringToMatch);
                 var tempValue = array[i];
+                console.log("-----------------------------------LINE BEGIN: " + i);
+                console.log(tempValue);
+
                 tempValue = tempValue.replace(") -", ") <br>");
-                tempValue = tempValue.replace("</a> ,", "<br>");
-                var stringWithSpace = ">       ,                              <a";
-                tempValue = tempValue.replace(stringWithSpace, "");
-                //tempValue = tempValue.replace("                ", "");
-                //tempValue = tempValue.replace("<td>","<td style=\"background-color:red;\">");
 
                 var j;
                 for (j = 0; j < 2; j++) {
                     tempValue = tempValue.replace("/info", "/swagger-ui.html");
                 }
-                //console.log(tempValue);
                 newContent.push(tempValue + "<br><br>");
+                // console debugging help
+                //console.log("-----------------------------------ELEMENT END");
+                console.log("-----------------------------------LINE END: " + i);
 
-                //console.log("ELEMENT END");
             }
         }
 
         if (newContent != null) {
 
-            document.body.innerHTML = newContent;
+            console.log("Updated Content: " + newContent);
+            document.body.innerHTML = newContent.toString().replace(/,/g, "");
         }
 
     }

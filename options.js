@@ -1,3 +1,5 @@
+var alertString = "Please Reload Your Browser Tab                       ";
+
 document.body.onload = function() {
 
     chrome.storage.sync.get("data", function(items) {
@@ -18,7 +20,8 @@ document.getElementById("save").onclick = function() {
             console.log("Save Successful");
         }
     });
-    alert("Please Reload Your Browser Tab");
+
+    alert(alertString);
     window.close();
 
 }
@@ -32,7 +35,7 @@ document.getElementById("reset").onclick = function() {
             console.log("Save Successful");
         }
     });
-    alert("Please Reload Your Browser Tab");
+    alert(alertString);
     window.close();
 
 }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Craig's Eureka Swagger Extension",
-  "description": "Nothing to do, just visit your Eureka pages!",
+  "name": "Get Your Swagger On Extension",
+  "description": "Ebsco Eureka users, navigate to devqa/integration,or live Eureka pages. Fill in the desired domain/market string to filter on and click the save button. Reload your Eureka tab. Done!    Currently, this works with the following Eureka URLS:     http://eureka.vpca.us-east-1.eis-deliverylive.cloud:8761, http://eureka.vpca.us-east-1.eis-deliveryintegration.cloud:8761, http://eureka.vpca.us-east-1.eis-deliverydevqa.cloud:8761. Future releases will make this configurable.",
   "version": "0.1",
   "browser_action": {
       "default_popup": "options.html"

@@ -35,7 +35,7 @@ $.get(url, function (response) {
 
         var newContent = new Array();
         // Let them know this is early
-        var info = "<i>" + "CSM v 1.0" + "</i> <a href='https://github.com/cmonroeEIS/EurekaSwaggerExt/blob/master/README.md' target='_blank'>README.md</a> ";
+        var info = "<i>" + "CSM v 1.0" + "</i> - <a href='https://github.com/cmonroeEIS/EurekaSwaggerExt/blob/master/README.md' target='_blank'>README.md</a> ";
         //var imageName = document.getElementById("images/Swagger-logo.png");
         //newContent.push(imageName);
 

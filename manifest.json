@@ -2,7 +2,8 @@
   "manifest_version": 2,
   "name": "Get Your Swagger On Extension",
   "description": "Ebsco Eureka users,can now visit the Eureka url for devqa,integration,and live and filter for their services.",
-  "version": "1.0",
+  "version": "1.1",
+  "author": "cmonroe@ebsco.com",
   "browser_action": {
       "default_popup": "options.html"
   },

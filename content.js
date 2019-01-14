@@ -8,7 +8,11 @@
 
 
 var url = window.location.pathname;
-
+var readMe = "https://github.com/cmonroeEIS/GetYourSwaggerOn/blob/master/README.md";
+var manifestData = chrome.runtime.getManifest();
+var version = manifestData.version;
+var author = manifestData.author;
+var breakString = "___________________________________________________________________";
 var stringToMatch = null;
 
 chrome.storage.sync.get(['data'], function(result) {
@@ -35,12 +39,10 @@ $.get(url, function (response) {
 
         var newContent = new Array();
         // Let them know this is early
-        var info = "<i>" + "CSM v 1.0" + "</i> - <a href='https://github.com/cmonroeEIS/EurekaSwaggerExt/blob/master/README.md' target='_blank'>README.md</a> ";
-        //var imageName = document.getElementById("images/Swagger-logo.png");
-        //newContent.push(imageName);
+        var info = "<i>Version: v" + version + " <a href='mailto:" + author + "'>" + author + "</a></i> - <a href='" + readMe + "' target='_blank'>README.md</a>";
 
         // Add a title
-        newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br><br>");
+        newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br>" + breakString + "<br><br>");
 
 
         var i;

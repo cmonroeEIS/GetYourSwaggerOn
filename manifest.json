@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Get Your Swagger On Extension",
-  "description": "Ebsco Eureka users,can now visit the Eureka url for devqa,integration,and live and filter for their services.",
-  "version": "1.1",
+  "description": "Eureka users,can now visit the Eureka url for devqa,integration,and live and filter for their services.",
+  "version": "1.9.1",
   "author": "cmonroe@ebsco.com",
   "browser_action": {
       "default_popup": "options.html"
@@ -15,9 +15,7 @@
   "web_accessible_resources": ["images/Swagger-logo.png"],
   "content_scripts": [
     {
-      "matches": [
-        "http://eureka.vpca.us-east-1.eis-deliverylive.cloud:8761/*","http://eureka.vpca.us-east-1.eis-deliveryintegration.cloud:8761/","http://eureka.vpca.us-east-1.eis-deliverydevqa.cloud:8761/"
-      ],
+      "matches": [ "http://eureka.vpca.us-east-1.eis-deliverylive.cloud/*", "http://eureka.vpca.us-east-1.eis-deliveryintegration.cloud/*","http://eureka.vpca.us-east-1.eis-deliverydevqa.cloud/*" ],
       "js": ["jquery-2.1.3.min.js", "content.js"]
     }
   ]

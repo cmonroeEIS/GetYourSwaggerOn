@@ -8,11 +8,10 @@
 
 
 var url = window.location.pathname;
-var readMe = "https://github.com/cmonroeEIS/GetYourSwaggerOn/blob/master/README.md";
+var readMe = "http://confluence/x/pwGlDg";
 var manifestData = chrome.runtime.getManifest();
-var version = manifestData.version;
 var author = manifestData.author;
-var breakString = "___________________________________________________________________";
+var breakString = "___________________________________________________________________________________________________________";
 var stringToMatch = null;
 
 chrome.storage.sync.get(['data'], function(result) {
@@ -39,10 +38,10 @@ $.get(url, function (response) {
 
         var newContent = new Array();
         // Let them know this is early
-        var info = "<i>Version: v" + version + " <a href='mailto:" + author + "'>" + author + "</a></i> - <a href='" + readMe + "' target='_blank'>README.md</a>";
+        var info = "<i><a href='mailto:" + author + "'>" + author + "</a></i> - <a href='" + readMe + "' target='_blank'>Confluence README</a>";
 
         // Add a title
-        newContent.push("<H1>" + stringToMatch.toUpperCase() + " Available Servers</H1>" + info + "<br>" + breakString + "<br><br>");
+        newContent.push("<H1>Available " + stringToMatch.toUpperCase() + "  Servers</H1>" + info + "<br>" + breakString + "<br><br>");
 
 
         var i;
@@ -58,7 +57,7 @@ $.get(url, function (response) {
 
                 var j;
                 for (j = 0; j < 2; j++) {
-                    tempValue = tempValue.replace("/info", "/swagger-ui.html");
+                    tempValue = tempValue.replace(/\/info/g, "/swagger-ui.html");
                 }
                 newContent.push(tempValue + "<br><br>");
                 // console debugging help
@@ -74,6 +73,18 @@ $.get(url, function (response) {
             document.body.innerHTML = newContent.toString().replace(/,/g, "");
         }
 
+    } else {   // just do the replace for the swagger path
+
+        var newContent = response;
+
+        if (newContent != null) {
+
+            // replace newContent instances with path change
+            newContent = newContent.replace(/info/g, "swagger-ui.html");
+
+            console.log("Updated Content: " + newContent);
+            document.body.innerHTML = newContent;
+        }
     }
 
     }

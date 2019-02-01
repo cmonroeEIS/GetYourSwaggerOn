@@ -20,11 +20,23 @@ document.body.onload = function() {
             document.getElementById("data").innerText = items.data;
         }
     });
+
+    /*chrome.storage.sync.get("checkBox", function(checkboxItems) {
+        console.log(checkboxItems);
+        if (!chrome.runtime.error) {
+            console.log(checkboxItems);
+            document.getElementById("checkBox").innerText = checkboxItems.checkBox;
+        }
+    });
+*/
+
 }
 
 // Save the data from the form if valid string
 document.getElementById("save").onclick = function() {
+    //var so = document.getElementById("swaggerOnly").value;
     var d = document.getElementById("domainMarket").value;
+    console.log("SO:" + so);
     console.log("D:" + d);
 
     // Remove white space then check the length.
@@ -39,13 +51,31 @@ document.getElementById("save").onclick = function() {
             }
 
         });
-        reloadTab();
+        //reloadTab();
     } else {
-        alert("String is invalid. Please enter a vailid string.");
-        window.close;
+
+        if(so){
+            chrome.storage.sync.set({"checkBox": so}, function () {
+                if (chrome.runtime.error) {
+                    console.log("Runtime error.");
+                } else {
+                    console.log("Save Successful");
+                }
+
+            });
+            alert("Swagger Path Change Only Selected");
+        } else {
+            alert("String is invalid. Please enter a vailid string.");
+            window.close;
+        }
+
+        alert(alertString);
+        window.close();
     }
-    alert(alertString);
-    window.close();
+
+
+
+
 
 }
 
@@ -59,6 +89,18 @@ document.getElementById("reset").onclick = function() {
             console.log("Save Successful");
         }
     });
+
+    var so = null;
+    chrome.storage.sync.set({ "checkBox" : so }, function() {
+        if (chrome.runtime.error) {
+            console.log("Runtime error.");
+        } else {
+            console.log("Save Successful");
+        }
+    });
+
+
+
     alert(alertString);
     window.close();
     reloadTab();

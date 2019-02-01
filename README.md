@@ -8,12 +8,7 @@ Date: 2018-12-30
    
  To Use:  
  1. Load the extension  
- 2. Navigate to one of the three EBSCO AWS environments for Eureka:
- 
-http://eureka.vpca.us-east-1.eis-deliverylive.cloud:8761  
-http://eureka.vpca.us-east-1.eis-deliveryintegration.cloud:8761  
-http://eureka.vpca.us-east-1.eis-deliverydevqa.cloud:8761  
-   
+ 2. Navigate to one of the three (Live, Integration, DevQa) environments for Eureka 
  3. Click on the Chrome extension icon 
  4. Enter the domain and/or market to filter on
  5. Click the save button
